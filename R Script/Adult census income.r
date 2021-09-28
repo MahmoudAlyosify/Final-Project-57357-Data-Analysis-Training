@@ -88,7 +88,10 @@ print(paste("Yes, there are some other characteristics that may affect the incom
       "And the average income according to the working hours for the First 50 people is",the_50th_Rate_of_Hours_INcome,
       "$","Whereas, the average education level or education level for the First 50 people is",the_50th_Rate_of_Education_NUM,
       "The average income according to the degree or level of education for the First 50 people",
-      the_50th_Rate_of_EducationNUM_INcome,"$"
-      ))
-
+      the_50th_Rate_of_EducationNUM_INcome,"$"))
+rm(Data_orderBy_Hours,Data_orderBy_EducationNUM,
+   the_50th_Rate_of_Hours,
+   the_50th_Rate_of_Hours_INcome,
+   the_50th_Rate_of_Education_NUM,
+   the_50th_Rate_of_EducationNUM_INcome)
 #©Mahmoud Sayed Youssef
