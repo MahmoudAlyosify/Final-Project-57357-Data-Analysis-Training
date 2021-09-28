@@ -22,16 +22,21 @@ while(i<= nrow(Data)){
   Total_Capital[i]=(Data_Orderby_Age_income$capital.gain[i])-(Data_Orderby_Age_income$capital.loss[i])
   i=i+1
 }
+Data_Orderby_Age_income_C<-Data_Orderby_Age_income[order(Data_Orderby_Age_income$income_c,decreasing = TRUE),]
 j<-1
-while(j<=nrow(Data_Orderby_Age_income)){
-  if(is.na(Data_Orderby_Age_income$income_c[j])|Data_Orderby_Age_income$income_c[j] =='Not applicable')
- Data_Orderby_Age_income$income[j] <- Total_Capital[j]
+while(j<=nrow(Data_Orderby_Age_income)&Data_Orderby_Age_income_C$income_c[j] =="Not applicable"){
+  Data_Orderby_Age_income_C$income_c[j] <- Total_Capital[j]
     j=j+1
 }
-Data_Orderby_Age_income_C<-Data_Orderby_Age_income[order(Data_Orderby_Age_income$income_c,decreasing = TRUE),]
+Data_Orderby_Age_income_C<-Data_Orderby_Age_income_C[order(Data_Orderby_Age_income_C$income_c,Data_Orderby_Age_income_C$age,decreasing = TRUE),]
+rm(Data2,Data_Orderby_Age_income,i,j,Total_Capital)
+the_50th_Rate_of_income<-sum(as.integer(Data_Orderby_Age_income_C$income_c[1:50]))/50
+the_50th_Rate_of_Age<-sum(as.integer(Data_Orderby_Age_income_C$age[1:50]))/50
+print("There is no relationship between the age and the income of the individual, as the average age of the top fifty individuals is 39 years and the average income is 9244.7 per year")
+
+#********************************************************************************************
+
+#2. Can we say that we have achieved gender equality?
 
 
 
-
-
-#© Mahmoud Sayed Youssef
