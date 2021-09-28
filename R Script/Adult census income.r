@@ -37,6 +37,36 @@ print("There is no relationship between the age and the income of the individual
 #********************************************************************************************
 
 #2. Can we say that we have achieved gender equality?
+count(Data_Orderby_Age_income_C,Gender)
+Data_Orderby_Age_income_C[Data_Orderby_Age_income_C$Gender == "Male" | 
+                            Data_Orderby_Age_income_C$Gender == "m "|
+                            Data_Orderby_Age_income_C$Gender == "malee"|
+                            Data_Orderby_Age_income_C$Gender == "male"|
+                            Data_Orderby_Age_income_C$Gender == "m", "Gender"] <- "M"
+Data_Orderby_Age_income_C[Data_Orderby_Age_income_C$Gender == "Female" | 
+                            Data_Orderby_Age_income_C$Gender == "female"|
+                            Data_Orderby_Age_income_C$Gender == "f", "Gender"] <- "F"
+Data_Male<-Data_Orderby_Age_income_C[Data_Orderby_Age_income_C$Gender=="M",]
+Data_Female<-Data_Orderby_Age_income_C[Data_Orderby_Age_income_C$Gender=="F",]
+Sum_income_Female<-sum(as.integer(Data_Female$income_c),na.rm = TRUE)
+Sum_income_Male<-sum(as.integer(Data_Male$income_c),na.rm = TRUE)
+the_Rato_of_income_for_Male<-Sum_income_Male/nrow(Data_Male)
+the_Rato_of_income_for_Female<-Sum_income_Female/nrow(Data_Female)
+Education_Levels_Male<-count(Data_Male,education)
+Education_Levels_Female<-count(Data_Female,education)
+The_AVG_of_HSgrad_Male<-round((Education_Levels_Male$n[12]/nrow(Data_Male))*100,2)
+The_AVG_of_Bachelor_Male<-round((Education_Levels_Male$n[10]/nrow(Data_Male))*100,2)
+The_AVG_of_HSgrad_Female<-round((Education_Levels_Female$n[12]/nrow(Data_Female))*100,2)
+The_AVG_of_Bachelor_Female<-round((Education_Levels_Female$n[10]/nrow(Data_Female))*100,2)
+print(paste("The Number of Male is",nrow(Data_Male),
+            "The Number of Female is",nrow(Data_Female),
+            "Male to female ratio is",round((nrow(Data_Male)/nrow(Data))*100,2),"% for Male and",round((nrow(Data_Female)/nrow(Data))*100,2),"% for Female",
+            "and I'm find that The average income of a male is",round(the_Rato_of_income_for_Male,3),"$",
+            "and The average income of a Female is",round(the_Rato_of_income_for_Female,3),"$",
+            "I analyzed the data of males and females in terms of education and found that the numbers are close, but we need to increase the effort in educating more women, as, for example, but not limited to.The percentage of males in secondary schools is",
+            The_AVG_of_HSgrad_Male,"and The percentage of women in secondary schools is",
+            The_AVG_of_HSgrad_Female,"Also, the percentage of males with a bachelor's degree is",
+            The_AVG_of_Bachelor_Male,"But the percentage of women with a bachelor's degree is",
+            The_AVG_of_Bachelor_Female))
 
-
-
+#©Mahmoud Sayed Youssef
