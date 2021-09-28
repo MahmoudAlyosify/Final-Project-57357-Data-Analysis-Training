@@ -69,4 +69,9 @@ print(paste("The Number of Male is",nrow(Data_Male),
             The_AVG_of_Bachelor_Male,"But the percentage of women with a bachelor's degree is",
             The_AVG_of_Bachelor_Female))
 
+#********************************************************************************************
+
+#3. What other attributes would be an income predictor/s?
+print("Yes, there are some other characteristics that may affect the income, such as the degree of education, the job, and the number of hours worked for each week")
+
 #©Mahmoud Sayed Youssef
